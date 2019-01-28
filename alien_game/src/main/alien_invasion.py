@@ -19,12 +19,8 @@ def run_game():
     while True:
         # 监视键盘和鼠标
         game_functions.check_events()
-
-        screen.fill(ai_setting.bg_color)
-        my_ship.blit_ship()
-
-        # 让最近的屏幕可见
-        pygame.display.flip()
+        # 刷新屏幕
+        game_functions.update_screen(screen, ai_setting, my_ship)
 
 
 run_game()
