@@ -17,6 +17,7 @@ class Bullet(pygame.sprite.Sprite):
         self.rect.y -= self.speed
 
     def check_boundary_y(self):
+        """判断子弹是否到达上边界(True:到达; False:未到达)"""
         if self.rect.bottom <= 0:
             return True
         return False

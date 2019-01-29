@@ -13,8 +13,22 @@ class UFO(pygame.sprite.Sprite):
         # 加载UFO移动速度
         self.speed_x = ai_settings.ufo_speed_x
 
+        # 加载UFO移动方向(1:右移动; -1:左移)
+        self.direction = 1
+
     def update(self):
-        self.rect.x += self.speed_x
+        if self.check_boundary_x():
+            self.direction = -self.direction
+        self.rect.x += (self.speed_x * self.direction)
+
+    def check_boundary_x(self):
+        """判断UFO是否到达左右边界(True:到达; False:未到达)"""
+        if self.rect.right >= self.screen.get_rect().right:
+            return True
+        elif self.rect.left <= 0:
+            return True
+        else:
+            return False
 
     def draw_ufo(self):
         self.screen.blit(self.image, self.rect)

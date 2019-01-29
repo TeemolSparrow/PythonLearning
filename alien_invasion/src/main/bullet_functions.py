@@ -13,9 +13,8 @@ def update_bullets_position(bullets):
 
     # 删除已消失的子弹
     for bullet in bullets.copy():
-        if bullet.rect.bottom <= 0:
+        if bullet.check_boundary_y():
             bullets.remove(bullet)
-    print("Bullet number: " + str(len(bullets)))
 
 
 def draw_bullets(bullets):

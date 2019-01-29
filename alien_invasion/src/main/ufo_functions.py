@@ -41,7 +41,7 @@ def update_ufos_position(ufos):
     ufos.update()
 
     # 删除已被击落的UFO
-    print("UFO number: " + str(len(ufos)))
+    # print("UFO number: " + str(len(ufos)))
 
 
 def draw_ufos(ufos):
