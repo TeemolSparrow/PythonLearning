@@ -1,9 +1,10 @@
 import bullet
 
 
-def draw_bullets(bullets):
-    for bullet in bullets.sprites():
-        bullet.draw_bullet()
+def fire_bullet(settings, screen, ship, bullets):
+    if len(bullets) < settings.bullet_allowed:
+        new_bullet = bullet.Bullet(settings, screen, ship)
+        bullets.add(new_bullet)
 
 
 def update_bullets_position(bullets):
@@ -14,11 +15,9 @@ def update_bullets_position(bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
-    print(len(bullets))
+    print("Bullet number: " + str(len(bullets)))
 
 
-def fire_bullet(settings, screen, ship, bullets):
-    if len(bullets) < settings.bullet_allowed:
-        new_bullet = bullet.Bullet(settings, screen, ship)
-        bullets.add(new_bullet)
-
+def draw_bullets(bullets):
+    for bullet in bullets.sprites():
+        bullet.draw_bullet()

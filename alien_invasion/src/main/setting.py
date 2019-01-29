@@ -2,7 +2,6 @@ class Settings:
     # 存储设置信息
 
     def __init__(self):
-        # 初始化配置
 
         # 屏幕设置
         self.screen_width = 800
@@ -18,3 +17,7 @@ class Settings:
         self.bullet_height = 10
         self.bullet_color = (60, 60, 60)
         self.bullet_allowed = 5
+
+        # UFO设置
+        self.ufo_speed_x = 1
+        self.ufo_speed_y = 5

@@ -7,6 +7,7 @@ import ufo
 import game_events
 import screen_functions
 import bullet_functions
+import ufo_functions
 
 
 def run_game():
@@ -18,7 +19,9 @@ def run_game():
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     my_ship = ship.Ship(ai_settings, screen)
     bullets = pygame.sprite.Group()
+    # 创建UFO群
     ufos = pygame.sprite.Group()
+    ufo_functions.create_ufos(ai_settings, screen, my_ship, ufos)
 
     # 游戏主循环
     while True:
@@ -30,6 +33,9 @@ def run_game():
 
         # 刷新子弹位置
         bullet_functions.update_bullets_position(bullets)
+
+        # 刷新UFO位置
+        ufo_functions.update_ufos_position(ufos)
 
         # 绘制屏幕
         screen_functions.update_screen(ai_settings, screen, my_ship, bullets, ufos)

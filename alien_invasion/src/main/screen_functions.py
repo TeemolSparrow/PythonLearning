@@ -15,8 +15,9 @@ def update_screen(settings, screen, ship, bullets, ufos):
     # 绘制子弹
     bullet_functions.draw_bullets(bullets)
 
-    # # 绘制UFO
-    # ufo_functions.blit_ufos()
+    # 绘制UFO
+    ufo_functions.draw_ufos(ufos)
 
     # 让最近的屏幕可见
     pygame.display.flip()
+
