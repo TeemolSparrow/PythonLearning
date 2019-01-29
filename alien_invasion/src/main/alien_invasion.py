@@ -2,9 +2,11 @@ import sys
 import pygame
 
 import setting
-import game_events
-import screen_events
 import ship
+import ufo
+import game_events
+import screen_functions
+import bullet_functions
 
 
 def run_game():
@@ -16,20 +18,21 @@ def run_game():
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     my_ship = ship.Ship(ai_settings, screen)
     bullets = pygame.sprite.Group()
+    ufos = pygame.sprite.Group()
 
     # 游戏主循环
     while True:
         # 监视键盘和鼠标
-        game_events.check_events(my_ship)
+        game_events.check_events(ai_settings, screen, my_ship, bullets)
 
         # 刷新飞船位置
-        my_ship.update_position()
+        my_ship.update_ship_position()
 
         # 刷新子弹位置
-        # bullets.update()
+        bullet_functions.update_bullets_position(bullets)
 
-        # 刷新屏幕
-        screen_events.update_screen(ai_settings, screen, my_ship)
+        # 绘制屏幕
+        screen_functions.update_screen(ai_settings, screen, my_ship, bullets, ufos)
 
 
 run_game()
