@@ -25,12 +25,16 @@ def check_keyup_events(event, ship):
         ship.moving_right = False
 
 
-def check_events(settings, screen, ship, bullets):
+def check_events(settings, status, screen, ship, bullets, play_button):
     # 响应键盘和鼠标事件
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             check_exit_events()
-        elif event.type == pygame.KEYDOWN:
+        elif event.type == pygame.KEYDOWN and status.game_active:
             check_keydown_events(event, settings, screen, ship, bullets)
-        elif event.type == pygame.KEYUP:
+        elif event.type == pygame.KEYUP and status.game_active:
             check_keyup_events(event, ship)
+        elif event.type == pygame.MOUSEBUTTONDOWN and not status.game_active:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            if play_button.rect.collidepoint(mouse_x, mouse_y):
+                status.game_active = True
