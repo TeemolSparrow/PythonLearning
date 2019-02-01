@@ -4,14 +4,16 @@ import game_status
 
 
 def collisions(status, screen, ship, bullets, ufos):
-    bullets_ufos_collisions(bullets, ufos)
+    bullets_ufos_collisions(status, bullets, ufos)
     ship_ufos_collisions(status, ship, bullets, ufos)
     ufos_bottom_collisions(status, screen, ship, bullets, ufos)
 
 
-def bullets_ufos_collisions(bullets, ufos):
+def bullets_ufos_collisions(status, bullets, ufos):
     """子弹与UFO碰撞"""
     pygame.sprite.groupcollide(bullets, ufos, True, True)
+    if len(ufos) == 0:
+        status.lvl_up()
 
 
 def ship_ufos_collisions(status, ship, bullets, ufos):

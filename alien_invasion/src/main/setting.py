@@ -21,4 +21,16 @@ class Settings:
 
         # UFO设置
         self.ufo_speed_x = 1
-        self.ufo_speed_y = 100
+        self.ufo_speed_y = 50
+
+        # 加速增幅倍数
+        self.speed_up = 1.1
+
+    def init_setting(self):
+        self.ufo_speed_x = 1
+        self.ufo_speed_y = 50
+
+    def increase_speed(self):
+        self.ufo_speed_x *= self.speed_up
+        self.ufo_speed_y *= self.speed_up
+        print(str(self.ufo_speed_x), str(self.ufo_speed_y))

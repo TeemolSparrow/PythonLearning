@@ -47,8 +47,6 @@ def run_game():
         # 绘制屏幕
         screen_functions.update_screen(ai_settings, status, screen, my_ship, bullets, ufos, play_button)
 
-        # 碰撞检测
-        collision_detection.collisions(status, screen, my_ship, bullets, ufos)
-
-
-run_game()
+        if status.game_active:
+            # 碰撞检测
+            collision_detection.collisions(status, screen, my_ship, bullets, ufos)

@@ -4,13 +4,13 @@ import ufo
 def get_available_ufo_number_x(ai_settings, ufo_width):
     """计算一行可容纳UFO数量"""
     available_space_x = ai_settings.screen_width
-    available_ufo_number_x = int(available_space_x/(2 * ufo_width))
+    available_ufo_number_x = int(available_space_x/(3 * ufo_width))
     return available_ufo_number_x
 
 
 def get_available_ufo_rows_y(ai_settings, ufo_height):
     """计算可容纳多少行UFO"""
-    available_space_y = ai_settings.screen_height - 10 * ufo_height
+    available_space_y = ai_settings.screen_height - 15 * ufo_height
     available_ufo_rows = int(available_space_y/(3 * ufo_height))
     return available_ufo_rows
 
@@ -36,7 +36,7 @@ def create_one_row_ufos_orderly(ai_settings, screen, ufos):
     else:
         ufo_list = ufos.sprites()
         last_ufo = ufo_list[-1]
-        if last_ufo.rect.x >= 2 * last_ufo.rect.width or last_ufo.rect.y >= last_ufo.rect.height:
+        if last_ufo.rect.x >= 3 * last_ufo.rect.width or last_ufo.rect.y >= last_ufo.rect.height:
             create_ufo(ai_settings, screen, ufos)
 
 
@@ -51,7 +51,7 @@ def create_one_row_ufos(ai_settings, screen, ufos):
 
         # 创建一行UFO
         for ufo_number in range(available_ufo_number_x):
-            rect_x = 2 * ufo_width * ufo_number
+            rect_x = 3 * ufo_width * ufo_number
             create_ufo(ai_settings, screen, ufos, rect_x)
 
 
@@ -71,15 +71,15 @@ def create_multi_row_ufos(ai_settings, screen, ufos):
         # 创建多行UFO
         for row_number in range(available_ufo_rows_y):
             for ufo_number in range(available_ufo_number_x):
-                rect_x = 2 * ufo_width * ufo_number
-                rect_y = 3 * ufo_height * row_number
+                rect_x = 3 * ufo_width * ufo_number
+                rect_y = 4 * ufo_height * row_number
                 create_ufo(ai_settings, screen, ufos, rect_x, rect_y)
 
 
 def create_ufos(ai_settings, screen, ufos):
     """创建UFO"""
-    # create_one_ufo(ai_settings, screen, ufos)
-    create_one_row_ufos_orderly(ai_settings, screen, ufos)
+    create_one_ufo(ai_settings, screen, ufos)
+    # create_one_row_ufos_orderly(ai_settings, screen, ufos)
     # create_one_row_ufos(ai_settings, screen, ufos)
     # create_multi_row_ufos(ai_settings, screen, ufos)
 

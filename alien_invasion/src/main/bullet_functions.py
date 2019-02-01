@@ -5,7 +5,6 @@ def fire_bullet(settings, screen, ship, bullets):
     if len(bullets) < settings.bullet_allowed:
         new_bullet = bullet.Bullet(settings, screen, ship)
         bullets.add(new_bullet)
-        print(len(bullets))
 
 
 def update_bullets_position(bullets):
