@@ -15,9 +15,9 @@ class ScoreBoard:
 
         # 创建剩余飞船组图像
         self.remaining_ships = pygame.sprite.Group()
-        for ship_number in range(self.status.ships_left):
+        for ship_number in range(self.status.ships_left - 1):
             ship_temp = ship.Ship(self.ai_settings, self.screen)
-            ship_temp.rect.x = 10 + ship_number * (ship_temp.rect.width + 5)
+            ship_temp.rect.x = 10 + ship_number * (ship_temp.rect.width + 10)
             ship_temp.rect.y = 0
             self.remaining_ships.add(ship_temp)
 
@@ -43,10 +43,11 @@ class ScoreBoard:
         self.level_image_rect.top = 30
 
     def update_remaining_ships(self):
-        for ship_number in range(self.status.ships_left):
+        self.remaining_ships = pygame.sprite.Group()
+        for ship_number in range(self.status.ships_left - 1):
             ship_temp = ship.Ship(self.ai_settings, self.screen)
-            ship_temp.rect.x = 10 + ship_number * ship_temp.rect.width
-            ship_temp.rect.y = 10
+            ship_temp.rect.x = 10 + ship_number * (ship_temp.rect.width + 10)
+            ship_temp.rect.y = 0
             self.remaining_ships.add(ship_temp)
 
     def update_high_score(self):
@@ -78,19 +79,22 @@ class ScoreBoard:
         self.level_image_rect.right = self.screen.get_rect().right - 20
         self.level_image_rect.top = 30
 
-    def draw_scoreboard(self):
-        # 绘制剩余飞船
-        # self.update_remaining_ships()
-        self.remaining_ships.draw(self.screen)
-
-        # 绘制最高分
+    def update_all_score(self):
+        # 更新得分及等级
         self.update_high_score()
-        self.screen.blit(self.high_score_image, self.high_score_image_rect)
-
-        # 绘制得分
         self.update_score()
-        self.screen.blit(self.score_image, self.score_image_rect)
-
-        # 绘制等级
         self.update_level()
+
+    def update_scoreboard(self):
+        # 更新计分板
+        self.update_remaining_ships()
+        self.update_all_score()
+
+    def draw_scoreboard(self):
+        # 绘制计分板
+        self.remaining_ships.draw(self.screen)
+        self.screen.blit(self.high_score_image, self.high_score_image_rect)
+        self.screen.blit(self.score_image, self.score_image_rect)
         self.screen.blit(self.level_image, self.level_image_rect)
+
+

@@ -87,7 +87,6 @@ def create_ufos(ai_settings, screen, ufos):
 def update_ufos_position(ai_settings, screen, ufos):
     # 刷新UFO位置
     ufos.update()
-
     # 持续生成UFO
     create_ufos(ai_settings, screen, ufos)
 

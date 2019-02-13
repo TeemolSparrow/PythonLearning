@@ -25,6 +25,7 @@ class UFO(pygame.sprite.Sprite):
             self.rect.y += self.ai_settings.ufo_speed_y
         # 水平移动
         self.rect.x += (self.speed_x * self.direction)
+        print(str(self.rect.x))
 
     def check_boundary_x(self):
         """判断UFO是否到达左右边界(True:到达; False:未到达)"""

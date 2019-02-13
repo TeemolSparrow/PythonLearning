@@ -59,4 +59,4 @@ def run_game():
 
         if status.game_active:
             # 碰撞检测
-            collision_detection.collisions_check(ai_settings, status, screen, my_ship, bullets, ufos)
+            collision_detection.collisions_check(ai_settings, status, screen, score_board, my_ship, bullets, ufos)
