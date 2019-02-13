@@ -19,7 +19,7 @@ def create_ufo(ai_settings, screen, ufos, rect_x=0, rect_y=0):
     """构造一个UFO"""
     one_ufo = ufo.UFO(ai_settings, screen)
     one_ufo.rect.x = rect_x
-    one_ufo.rect.y = rect_y
+    one_ufo.rect.y = 50 + rect_y
     ufos.add(one_ufo)
 
 

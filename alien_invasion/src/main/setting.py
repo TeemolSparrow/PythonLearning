@@ -9,7 +9,7 @@ class Settings:
         self.bg_color = (255, 255, 255)
 
         # 飞船设置
-        self.ship_speed = 1.5
+        self.ship_speed = 1
         self.ship_limit = 3
 
         # 子弹设置
@@ -21,16 +21,23 @@ class Settings:
 
         # UFO设置
         self.ufo_speed_x = 1
-        self.ufo_speed_y = 50
-
-        # 加速增幅倍数
-        self.speed_up = 1.1
+        self.ufo_speed_y = 30
+        self.ufo_speed_up = 1.1
+        self.ufo_points = 50
+        self.ufo_points_up = 1.5
 
     def init_setting(self):
         self.ufo_speed_x = 1
         self.ufo_speed_y = 50
+        self.ufo_points = 50
 
-    def increase_speed(self):
-        self.ufo_speed_x *= self.speed_up
-        self.ufo_speed_y *= self.speed_up
-        print(str(self.ufo_speed_x), str(self.ufo_speed_y))
+    def increase_ufo_speed(self):
+        self.ufo_speed_x *= self.ufo_speed_up
+        self.ufo_speed_y *= self.ufo_speed_up
+        print("Speed x:" + str(self.ufo_speed_x) + "     Speed y:" + str(self.ufo_speed_y))
+
+    def increase_ufo_points(self):
+        self.ufo_points = int(self.ufo_points * self.ufo_points_up)
+        print("UFO points: " + str(self.ufo_points))
+
+
