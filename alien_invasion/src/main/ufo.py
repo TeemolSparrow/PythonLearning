@@ -24,14 +24,13 @@ class UFO(pygame.sprite.Sprite):
             # 到达边界下移
             self.rect.y += self.ai_settings.ufo_speed_y
         # 水平移动
-        self.rect.x += (self.speed_x * self.direction)
-        print(str(self.rect.x))
+        self.rect.x = self.rect.x + (self.speed_x * self.direction)
 
     def check_boundary_x(self):
         """判断UFO是否到达左右边界(True:到达; False:未到达)"""
         if self.rect.right >= self.screen.get_rect().right:
             return True
-        elif self.rect.left < 0:
+        elif self.rect.left <= 0:
             return True
         else:
             return False

@@ -10,7 +10,7 @@ def get_available_ufo_number_x(ai_settings, ufo_width):
 
 def get_available_ufo_rows_y(ai_settings, ufo_height):
     """计算可容纳多少行UFO"""
-    available_space_y = ai_settings.screen_height - 15 * ufo_height
+    available_space_y = ai_settings.screen_height - 10 * ufo_height
     available_ufo_rows = int(available_space_y/(3 * ufo_height))
     return available_ufo_rows
 
@@ -18,7 +18,7 @@ def get_available_ufo_rows_y(ai_settings, ufo_height):
 def create_ufo(ai_settings, screen, ufos, rect_x=0, rect_y=0):
     """构造一个UFO"""
     one_ufo = ufo.UFO(ai_settings, screen)
-    one_ufo.rect.x = rect_x
+    one_ufo.rect.x = 1 + rect_x
     one_ufo.rect.y = 50 + rect_y
     ufos.add(one_ufo)
 
@@ -72,15 +72,15 @@ def create_multi_row_ufos(ai_settings, screen, ufos):
         for row_number in range(available_ufo_rows_y):
             for ufo_number in range(available_ufo_number_x):
                 rect_x = 3 * ufo_width * ufo_number
-                rect_y = 4 * ufo_height * row_number
+                rect_y = 2 * ufo_height * row_number
                 create_ufo(ai_settings, screen, ufos, rect_x, rect_y)
 
 
 def create_ufos(ai_settings, screen, ufos):
     """创建UFO"""
-    create_one_ufo(ai_settings, screen, ufos)
+    # create_one_ufo(ai_settings, screen, ufos)
     # create_one_row_ufos_orderly(ai_settings, screen, ufos)
-    # create_one_row_ufos(ai_settings, screen, ufos)
+    create_one_row_ufos(ai_settings, screen, ufos)
     # create_multi_row_ufos(ai_settings, screen, ufos)
 
 
