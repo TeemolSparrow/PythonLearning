@@ -42,4 +42,3 @@ class Settings:
 
     def increase_ufo_points(self):
         self.ufo_points = int(self.ufo_points * self.ufo_points_up)
-        print(self.ufo_points)

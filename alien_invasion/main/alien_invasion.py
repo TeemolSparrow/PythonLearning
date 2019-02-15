@@ -1,9 +1,7 @@
-import sys
 import pygame
 
 import setting
 import ship
-import ufo
 import game_events
 import screen_functions
 import bullet_functions
