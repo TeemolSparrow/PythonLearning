@@ -48,23 +48,16 @@ def show_highs_and_lows(filename):
         # 读取日期、最高和最低气温
         dates, highs, lows = [], [], []
         for row in reader:
-            current_date = datetime.strptime(row[0], "%Y-%m-%d")
-            dates.append(current_date)
-            highs.append(int(row[1]))
-            lows.append(int(row[3]))
-
-            # try:
-            #     current_date = datetime.strptime(row[0], "%Y-%m-%d")
-            #     high = row[1]
-            #     low = row[3]
-            #     print(high, low)
-            # except ValueError:
-            #     print(current_date, "Missing data")
-            # else:
-            #     dates.append(current_date)
-            #     print(high, low)
-            #     highs.append(high)
-            #     lows.append(low)
+            try:
+                current_date = datetime.strptime(row[0], "%Y-%m-%d")
+                high = int(row[1])
+                low = int(row[3])
+            except ValueError:
+                print(current_date, "Missing data")
+            else:
+                dates.append(current_date)
+                highs.append(high)
+                lows.append(low)
 
         # 绘制图形
         fig = plt.figure(dpi=128, figsize=(10, 6))
@@ -82,4 +75,4 @@ def show_highs_and_lows(filename):
 show_highs('weather_sitka_2014-07.csv')
 show_highs('weather_sitka_2014.csv')
 show_highs_and_lows('weather_sitka_2014.csv')
-# show_highs_and_lows('weather_death_valley_2014.csv')
+show_highs_and_lows('weather_death_valley_2014.csv')
