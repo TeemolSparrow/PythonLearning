@@ -1,4 +1,4 @@
-import AlienInvasion
+import alien_invasion
 
 
-AlienInvasion.run_game()
+alien_invasion.run_game()
