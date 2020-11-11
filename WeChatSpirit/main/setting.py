@@ -1,0 +1,1 @@
+remind_time_interval = 5 * 60         # 提醒时间间隔，单位：秒
